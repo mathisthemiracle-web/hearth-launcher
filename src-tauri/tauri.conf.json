@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Hearth",
+  "version": "0.3.1",
+  "identifier": "com.hearth.launcher",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Hearth",
+        "width": 1320,
+        "height": 840,
+        "minWidth": 960,
+        "minHeight": 640,
+        "resizable": true,
+        "fullscreen": false,
+        "label": "main",
+        "backgroundColor": "#15100d",
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' ipc: http://ipc.localhost https://api.modrinth.com; img-src 'self' data: asset: http://asset.localhost https://cdn.modrinth.com https://avatars.modrinth.com https://mc-heads.net; style-src 'self' 'unsafe-inline'; font-src 'self'",
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "$APPDATA/Hearth/instances/**"
+        ]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
+    "copyright": "Hearth contributors",
+    "category": "Utility",
+    "publisher": "Hearth contributors",
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "displayLanguageSelector": false
+      }
+    },
+    "shortDescription": "A warm, performance-focused Minecraft launcher",
+    "longDescription": "Hearth keeps Minecraft instances, performance presets, existing optimisation mods, and shader choices in one calm desktop launcher."
+  }
+}
